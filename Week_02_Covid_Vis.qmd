@@ -34,3 +34,8 @@ covid_data_count |>
   filter(state == "MA") |> 
   ggplot(aes(x = date, y = Cases, color = race)) + geom_line()
 ```
+
+1. Write code for a plot and describe what you observe?
+2. Are there any conclusions you can draw?
+3. What were you not able to do due to not having the R knowledge?
+4. What other data would be useful to better understand this data?

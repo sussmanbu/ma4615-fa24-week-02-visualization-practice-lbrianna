@@ -9,7 +9,7 @@
 <meta name="author" content="[[Your Name]]">
 <meta name="dcterms.date" content="2023-09-11">
 
-<title>Week_02_Covid_Vis</title>
+<title>Week 02: COVID Visualization Activity</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week_02_Covid_Vis</h1>
+<h1 class="title">Week 02: COVID Visualization Activity</h1>
 </div>
 
 
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>Today, we’ll be working on a data set related to COVID. This data is based on data from the the <a href="https://covidtracking.com/">COVID Tracking Project</a>. I cleaned up this data and also added total populations from the 2020 for each of the relevant categories. Note, due to differences in the way race and ethnicity are encoded in the census as compared to the the COVID Tracking Project, the population counts for LatinX may be somewhat inaccurate.</p>
+<p>Today, we’ll be working with a data set related to COVID. This data is based on data from the the <a href="https://covidtracking.com/">COVID Tracking Project</a>. I cleaned up this data and also added total populations from the 2020 for each of the relevant categories. Note, due to differences in the way race and ethnicity are encoded in the census as compared to the the COVID Tracking Project, the population counts for LatinX may be somewhat inaccurate.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -130,6 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [5] "has_annotations" </code></pre>
 </div>
 </div>
+<p>I’ve include 4 different data sets. They all have the same data but have it represented in different ways. Try using the different data sets and see which ones are good for making which plots.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(covid_data_count, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> Cases)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -139,6 +140,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="Week_02_Covid_Vis_files/figure-html/first_plot-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<p>If you want to only look at a specific state, you can do it like this. For now, see what you can do just using <code>ggplot</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>covid_data_count <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"MA"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> Cases, <span class="at">color =</span> race)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Week_02_Covid_Vis_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ol type="1">
+<li>Write code for a plot and describe what you observe?</li>
+<li>Are there any conclusions you can draw?</li>
+<li>What were you not able to do due to not having the R knowledge?</li>
+<li>What other data would be useful to better understand this data?</li>
+</ol>
 
 </main>
 <!-- /main column -->
