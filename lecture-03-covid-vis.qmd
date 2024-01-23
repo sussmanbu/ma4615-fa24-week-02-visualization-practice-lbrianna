@@ -2,6 +2,7 @@
 title: "Week 02: COVID Visualization Activity"
 date: "September, 11 2023"
 author: "**`[[`**Your Name**`]]`**"
+format: gfm
 ---
 
 Today, we'll be working with a data set related to COVID.
