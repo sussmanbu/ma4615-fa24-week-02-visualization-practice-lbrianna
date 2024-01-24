@@ -57,6 +57,8 @@ ggplot(covid_data_simple, aes(x = date, y = Deaths)) + geom_point()
 
 ![](lecture-03-covid-vis_files/figure-commonmark/exercise-1.png)
 
+Comment on the disparities between the race groups.
+
 **If you finish**
 
 Either

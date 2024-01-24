@@ -49,7 +49,7 @@ covid_data_count |>
 ggplot(covid_data_simple, aes(x = date, y = Deaths)) + geom_point()
 ```
 
-
+Comment on the disparities between the race groups.
 
 **If you finish**
 
