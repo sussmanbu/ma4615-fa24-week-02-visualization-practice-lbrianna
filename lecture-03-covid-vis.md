@@ -1,5 +1,5 @@
 # Week 02: COVID Visualization Activity
-**`[[`**Your Name**`]]`**
+**`[[`**Brianna Li**`]]`**
 2023-09-11
 
 Today, we’ll be working with a data set related to COVID. This data is

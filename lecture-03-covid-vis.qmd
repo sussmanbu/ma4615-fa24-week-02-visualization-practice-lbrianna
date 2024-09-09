@@ -1,7 +1,7 @@
 ---
 title: "Week 02: COVID Visualization Activity"
 date: "September, 11 2023"
-author: "**`[[`**Your Name**`]]`**"
+author: "**`[[`**Brianna Li**`]]`**"
 format: gfm
 ---
 
@@ -37,8 +37,72 @@ covid_data_count |>
 ```
 
 1. After making and refining some plots, pick one and save the code and describe what you observe?
+
+```{r}
+# add death rate
+covid_data_simple <- covid_data_simple |>
+  mutate(death_rate = (Deaths / population) * 100)  # Ensure population is the total for each race group
+
+# plot covid-19 death rate by race
+covid_data_simple |>
+  ggplot(aes(x = date, y = death_rate, color = race)) + 
+  geom_line() +
+  labs(title = "COVID-19 Death Rate by Race", 
+       x = "Date", 
+       y = "Death Percentage (%)",
+       color = "Race")
+```
+```{r}
+# add death rate
+covid_data_simple <- covid_data_simple |>
+  mutate(hosp_rate = (Hosp / population) * 100)  # Ensure population is the total for each race group
+
+# plot covid-19 death rate by race
+covid_data_simple |>
+  ggplot(aes(x = date, y = hosp_rate, color = race)) + 
+  geom_line() +
+  labs(title = "COVID-19 Hospitalization Rate by Race", 
+       x = "Date", 
+       y = "Hospitalization Percentage (%)",
+       color = "Race")
+```
+```{r}
+
+# add death rate and hospitalization rate to covid data simple
+covid_data_simple <- covid_data_simple |>
+  mutate(
+    death_rate = (Deaths / population) * 100,  # Death percentage
+    hosp_rate = (Hosp / population) * 100     # Hospitalization percentage
+  )
+
+# reshape data to long format
+covid_data_long <- covid_data_simple |>
+  pivot_longer(cols = c(death_rate, hosp_rate), 
+               names_to = "rate_type", 
+               values_to = "rate_value")
+
+# plot covid-19 death and hospitalization rates by race
+ggplot(covid_data_long, aes(x = date, y = rate_value, color = race, linetype = rate_type)) + 
+  geom_line() +
+  scale_linetype_manual(values = c("death_rate" = "dotted", "hosp_rate" = "solid"))
+  labs(
+    title = "COVID-19 Death and Hospitalization Rates by Race", 
+    x = "Date", 
+    y = "Rate Percentage (%)",
+    color = "Race",
+    linetype = "Rate Type"
+  )
+
+```
+
 2. What conclusions can you draw?
+```{md}
+Before October, the death rate was higher that the hospitalization rate for all races. In addition, the rate of hospitalization for Blacks and Latinx were the highest and also the most similar. The death rate was highest for the black population. In October, there was a jump in hospitalization rate. This was also around the time that the COVID-19 vaccination was approved.
+```
+
 3. What were you not able to do due to not having the coding knowledge?
+```{md}
+I wanted to create a graph that would show the funnel/rate of positive tests to hospitalization to death to see the conversion rates.
+```
 4. What made previous plots you made hard to interpret/understand? What did you do to improve/change them to ease interpretation?
 5. What other data would be useful to better understand this data?
-
